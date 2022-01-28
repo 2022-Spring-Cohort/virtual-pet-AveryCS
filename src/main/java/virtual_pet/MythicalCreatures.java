@@ -1,8 +1,11 @@
 package virtual_pet;
 
-public class VirtualPet {
+import java.util.ArrayList;
+
+public abstract class MythicalCreatures {
+
     private String name;
-    private int hungerLevel = 0;
+    private int hungerLevel;
     private int thirstLevel;
     private int boredomLevel;
     private String color;
@@ -10,9 +13,8 @@ public class VirtualPet {
     private int age;
     private int restLevel;
 
-
-    public VirtualPet(String name, String superPower, int age, int restLevel, int boredomLevel,
-                      int hungerLevel, int thirstLevel) {
+    public MythicalCreatures(String name, String superPower, int age, int restLevel, int boredomLevel,
+                   int hungerLevel, int thirstLevel) {
         this.name = name;
         this.hungerLevel = hungerLevel;
         this.thirstLevel = thirstLevel;
@@ -21,14 +23,22 @@ public class VirtualPet {
         this.superPower = superPower;
         this.age = age;
         this.restLevel = restLevel;
-
-
-
     }
-
 
     public String getName() {
         return name;
+    }
+
+    public int getHungerLevel() {
+        return hungerLevel;
+    }
+
+    public int getThirstLevel() {
+        return thirstLevel;
+    }
+
+    public int getBoredomLevel() {
+        return boredomLevel;
     }
 
     public String getColor() {
@@ -43,18 +53,11 @@ public class VirtualPet {
         return age;
     }
 
-    public int getHungerLevel() {
-        return hungerLevel;
-    }
-    public int getrestLevel(){ return restLevel;}
-
-    public int getBoredomLevel() {
-        return boredomLevel;
+    public int getRestLevel() {
+        return restLevel;
     }
 
-    public int getThirstLevel() {
-        return thirstLevel;
-    }
+
 
     public String greeting() {
 
@@ -62,7 +65,7 @@ public class VirtualPet {
 
     }
     public String statusMessage(){
-        return hungerLevelMessage()+ "\n" + thirstLevelMessage()+"\n" + boredomLevelMessage()+ "\n" +restLevelMessage();
+        return  name + hungerLevelMessage()+ "\n" + thirstLevelMessage()+"\n" + boredomLevelMessage()+ "\n" +restLevelMessage();
     }
 
 
@@ -146,9 +149,7 @@ public class VirtualPet {
     }
 
 
-
-        }
-
+    }
 
 
 

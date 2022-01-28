@@ -6,14 +6,27 @@ public class VirtualPetApplication {
 
     public static void main(String[] args) {
 
-        VirtualPet ozymandias = new VirtualPet("Ozymandias", "invisibility", 12, 5, 5, 5, 5);
-        VirtualPet ravery = new VirtualPet("ravery", "  speaking to every living thing", 200, 5, 5, 5, 5);
-        VirtualPet maisley = new VirtualPet("maisley", " living underwater", 8, 5, 5, 5, 5);
-        VirtualPet juniper = new VirtualPet("juniper", "making her 3D printed things come to life", 37, 5, 5, 5, 5);
-        VirtualPet codycode = new VirtualPet("codycode", " building software on the spot", 99, 5, 5, 5, 5);
-        VirtualPet atlas = new VirtualPet("atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5);
-        VirtualPet pauletta = new VirtualPet("pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5);
-        VirtualPet shardude = new VirtualPet("shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5);
+    VirtualPetShelter mythicalCreatureShelter = new VirtualPetShelter();
+
+
+        Unicorn ozymandias = new Unicorn("Ozymandias", "invisibility", 12, 5, 5, 5, 5, "spiral");
+        Unicorn ravery = new Unicorn("Ravery", "  speaking to every living thing", 200, 5, 5, 5, 5, "tongue");
+        Unicorn maisley = new Unicorn("Maisley", " living underwater", 8, 5, 5, 5, 5, "fish");
+        Unicorn juniper = new Unicorn("Juniper", "making her 3D printed things come to life", 37, 5, 5, 5, 5, "tv");
+        Unicorn codycode = new Unicorn("Codycode", " building software on the spot", 99, 5, 5, 5, 5, "laptop");
+        Unicorn atlas = new Unicorn("Atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5, "globe");
+        Unicorn pauletta = new Unicorn("Pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5, "calculator");
+        Unicorn shardude = new Unicorn("Shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5, "guitar");
+        mythicalCreatureShelter.addUnicorn(ozymandias);
+        mythicalCreatureShelter.addUnicorn(ravery);
+        mythicalCreatureShelter.addUnicorn(maisley);
+        mythicalCreatureShelter.addUnicorn(juniper);
+        mythicalCreatureShelter.addUnicorn(codycode);
+        mythicalCreatureShelter.addUnicorn(atlas);
+        mythicalCreatureShelter.addUnicorn(pauletta);
+        mythicalCreatureShelter.addUnicorn(shardude);
+
+
 
         System.out.println("Welcome to Virtual Pet land! To get started, please type the number that represents your favorite" +
                 "color. \n 1- red \n 2- orange \n 3- blue \n 4- green \n 5- purple \n 6-black \n 7- pink \n 8- My favorite color is not listed.");
@@ -23,7 +36,7 @@ public class VirtualPetApplication {
         String userFavColor = userInput.nextLine();
 
         String greeting;
-        VirtualPet userPet;
+        Unicorn userPet;
         switch (userFavColor.toLowerCase()) {
             case "1":
                 greeting = ozymandias.greeting();
@@ -82,7 +95,11 @@ public class VirtualPetApplication {
         System.out.println(asciiUnicorn);
 
         String instructions = "Press the corresponding key to perform these actions with your pet: \n1- Get status of " +
-                "your pet \n2- Feed  \n3- Give water \n4- Give rest \n5- Play with your pet";
+                "your pet \n2- Feed  \n3- Give water \n4- Give rest \n5- Play with your pet \n \nOR, would you like to hang" +
+                "out with ALL of the creatures in the shelter?\n \nIf so, see the selections below: " +
+                "\n\nA- Get status (of ALL pets) \nB- Feed (ALL pets)  \nC- Give water (to ALL pets) \nD- Give rest (to ALL pets)" +
+                " \nE- Play (with ALL pets) \n\n OR see the following: \nF- See which pets are currently in the shelter" +
+                "\nG-Adopt a pet \nH- Add a pet  ";
 
         System.out.println(instructions);
 
@@ -92,7 +109,7 @@ public class VirtualPetApplication {
         String userSelection = userInput.nextLine();
 
 
-        while (userPet.getrestLevel() > 15 || userPet.getBoredomLevel() > 15 || userPet.getThirstLevel() > -5 &&
+        while (userPet.getRestLevel() > 15 || userPet.getBoredomLevel() > 15 || userPet.getThirstLevel() > -5 &&
                 userPet.getThirstLevel() < 10 || userPet.getHungerLevel() > -5 && userPet.getHungerLevel() < 10) {
 
             if (userSelection.contains("1")) {
@@ -115,12 +132,29 @@ public class VirtualPetApplication {
                 userPet.tickMethod();
                 userPet.playMethod();
                 System.out.println("That was so much fun! I love to play.");
-            } else {
-                System.out.println("Your selection must be 1-8.");
-                System.out.println(proceedMessage);
-                        userSelection = userInput.nextLine();
+            } else if (userSelection.contains("A")){
+                 mythicalCreatureShelter.showAllStatus();
+            }else if (userSelection.contains("B")) {
+                mythicalCreatureShelter.feedAll();
+            }else if (userSelection.contains("C")) {
+                mythicalCreatureShelter.waterAll();
+            }else if (userSelection.contains("D")) {
+                mythicalCreatureShelter.giveRestToAll();
+            }else if (userSelection.contains("E")) {
+                mythicalCreatureShelter.playWithAll();
+            } else if (userSelection.contains("F")) {
+                mythicalCreatureShelter.getallMythicalCreatures();
+            }else if (userSelection.contains("H")) {
+                //need to finish this
 
             }
+
+            else {
+                System.out.println("Your selection must be 1-8 or A-E.");
+                System.out.println(proceedMessage);
+                        userSelection = userInput.nextLine();
+            }
+
             System.out.println(instructions);
             System.out.println(proceedMessage);
             userSelection = userInput.nextLine();
