@@ -94,7 +94,7 @@ public class VirtualPetApplication {
                 " ^^^jgs^^\"\"\"^^^^^^\"\"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
         System.out.println(asciiUnicorn);
 
-        String instructions = "Press the corresponding key to perform these actions with your pet: \n1- Get status of " +
+        String instructions = "\nPress the corresponding key to perform these actions with your pet: \n1- Get status of " +
                 "your pet \n2- Feed  \n3- Give water \n4- Give rest \n5- Play with your pet \n \nOR, would you like to hang" +
                 "out with ALL of the creatures in the shelter?\n \nIf so, see the selections below: " +
                 "\n\nA- Get status (of ALL pets) \nB- Feed (ALL pets)  \nC- Give water (to ALL pets) \nD- Give rest (to ALL pets)" +
@@ -132,25 +132,34 @@ public class VirtualPetApplication {
                 userPet.tickMethod();
                 userPet.playMethod();
                 System.out.println("That was so much fun! I love to play.");
-            } else if (userSelection.contains("A")){
+            } else if (userSelection.equalsIgnoreCase(  "A")){
                  mythicalCreatureShelter.showAllStatus();
-            }else if (userSelection.contains("B")) {
+            }else if (userSelection.equalsIgnoreCase("B")) {
                 mythicalCreatureShelter.feedAll();
-            }else if (userSelection.contains("C")) {
+                System.out.println("\n \nThanks for giving us all something to eat! We can't wait until the next meal!\n \n");
+            }else if (userSelection.equalsIgnoreCase("C")) {
                 mythicalCreatureShelter.waterAll();
-            }else if (userSelection.contains("D")) {
+                System.out.println("\n \nThanks for giving us all something to drink!\n \n");
+            }else if (userSelection.equalsIgnoreCase("D")) {
                 mythicalCreatureShelter.giveRestToAll();
-            }else if (userSelection.contains("E")) {
+                System.out.println("\n \nNaptime for us :( \n \n");
+            }else if (userSelection.equalsIgnoreCase("E")) {
                 mythicalCreatureShelter.playWithAll();
-            } else if (userSelection.contains("F")) {
+                System.out.println("\n \nWe had such a great time playing with all our friends \n \n");
+                System.out.println("\n \nWe had fun flying with our friends! Thanks for taking us to play!\n \n");
+            } else if (userSelection.equalsIgnoreCase("F")) {
+                System.out.println("\n \nHere's who's left in the shelter at this time: \n");
                 mythicalCreatureShelter.getallMythicalCreatures();
-            }else if (userSelection.contains("H")) {
-                //need to finish this
+            }else if (userSelection.equalsIgnoreCase("G")) {
+                mythicalCreatureShelter.adoptUnicorn();
+                System.out.println();
+            }else if (userSelection.equalsIgnoreCase("H")) {
+                mythicalCreatureShelter.addNewUnicorn();
 
             }
 
             else {
-                System.out.println("Your selection must be 1-8 or A-E.");
+                System.out.println("Your selection must be 1-8 or A-H.");
                 System.out.println(proceedMessage);
                         userSelection = userInput.nextLine();
             }

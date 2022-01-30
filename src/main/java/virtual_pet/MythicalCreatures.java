@@ -65,7 +65,7 @@ public abstract class MythicalCreatures {
 
     }
     public String statusMessage(){
-        return  name + hungerLevelMessage()+ "\n" + thirstLevelMessage()+"\n" + boredomLevelMessage()+ "\n" +restLevelMessage();
+        return  "Here's what " + name+" has to say:\n" + hungerLevelMessage()+ "\n" + thirstLevelMessage()+"\n" + boredomLevelMessage()+ "\n" +restLevelMessage() +"\n \n";
     }
 
 

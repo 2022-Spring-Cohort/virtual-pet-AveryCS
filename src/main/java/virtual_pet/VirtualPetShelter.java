@@ -1,11 +1,13 @@
 package virtual_pet;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class VirtualPetShelter {
+    Scanner scanner = new Scanner(System.in);
 
 
-    ArrayList<MythicalCreatures> mythicalCreaturesInShelter;
+    static ArrayList<MythicalCreatures> mythicalCreaturesInShelter;
 
     public VirtualPetShelter() {
         this.mythicalCreaturesInShelter = new ArrayList<>();
@@ -15,6 +17,106 @@ public class VirtualPetShelter {
     public void addUnicorn(Unicorn myUnicorn) {
         mythicalCreaturesInShelter.add(myUnicorn);
     }
+
+    public Unicorn addNewUnicorn() {
+        System.out.println("What's your unicorn name?");
+        Scanner scanner = new Scanner(System.in);
+        String newName = scanner.nextLine();
+
+        System.out.println("What's your unicorn's superpower?");
+        scanner = new Scanner(System.in);
+        String newSuperPower = scanner.nextLine();
+
+        System.out.println("How old is your unicorn?");
+        scanner = new Scanner(System.in);
+        int newAge = scanner.nextInt();
+
+        System.out.println("What's your unicorn's horn shape?");
+        scanner = new Scanner(System.in);
+        String newHornShape = scanner.nextLine();
+
+
+        Unicorn newUnicorn = new Unicorn(newName, newSuperPower, newAge, 5, 5, 5, 5, newHornShape);
+        mythicalCreaturesInShelter.add(newUnicorn);
+
+        System.out.println("\n \nDon't worry, "+ newUnicorn+ "will be well taken care of at the shelter!\n \n");
+
+        return newUnicorn;
+
+    }
+
+    public void adoptUnicorn() {
+        System.out.println("There are currently "+mythicalCreaturesInShelter.size()+ " unicorns to adopt. See the list below:");
+        //prints name of all the MC's in the shelter
+
+        for (MythicalCreatures creatures : mythicalCreaturesInShelter)
+            System.out.println(creatures.getName());
+
+        //scanner brings in the user input
+        scanner = new Scanner(System.in);
+
+        //this says that the user input will be assigned to a String of their choosing
+        String adoptedUnicorn = scanner.nextLine();
+
+
+        //In Java programming, null can be assigned to any variable of a reference type
+        // (that is, a non-primitive type)to indicate that the variable does not refer to
+        // any object or array.
+
+        //So, is this saying that the chosenUnicorn does not refer to an object (current Unicorn in the
+        //arraylist) ?
+        Unicorn chosenUnicorn = null;
+
+
+        for (MythicalCreatures currentCreature : mythicalCreaturesInShelter) {
+            //if the name of the creature in the ArrayList equals the name of the adopted unicorn
+            if (currentCreature.getName().equalsIgnoreCase(adoptedUnicorn)) {
+
+                //this is saying if the chosenUnicorn is equal to the currentCreature that it
+                //just looped throug
+                chosenUnicorn = (Unicorn) currentCreature;
+            }
+            }
+
+        //AND if the chosenUnicorn isn't null, meaning that it is in the Array List, then remove it
+        if (chosenUnicorn != null) {
+            mythicalCreaturesInShelter.remove(chosenUnicorn);
+            System.out.println("\n \nCongratulations! You have now adopted " + chosenUnicorn.getName() + "!\n \n");
+        }
+
+    }
+
+
+
+
+
+//    public void adoptUnicorn(){
+//        System.out.println("Which unicorn would you like to adopt? See the list below");
+//        for (MythicalCreatures currentCreature : mythicalCreaturesInShelter) {
+//            System.out.println(currentCreature.getName());
+//            scanner = new Scanner(System.in);
+//            String adoptedUnicorn = scanner.nextLine();
+//            Unicorn chosenUnicorn = null;
+//            for (MythicalCreatures currentCreature2 : mythicalCreaturesInShelter) {
+//                if(currentCreature2.getName().equalsIgnoreCase(chosenUnicorn)){
+//                    chosenUnicorn = currentCreature2;
+//                }
+//            }
+//                System.out.println(currentCreature.getName());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void getallMythicalCreatures() {
         for (MythicalCreatures currentCreature : mythicalCreaturesInShelter) {
