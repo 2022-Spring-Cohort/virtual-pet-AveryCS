@@ -1,7 +1,5 @@
 package virtual_pet;
 
-import java.util.ArrayList;
-
 public abstract class MythicalCreatures {
 
     private String name;
@@ -13,8 +11,10 @@ public abstract class MythicalCreatures {
     private int age;
     private int restLevel;
 
+
+
     public MythicalCreatures(String name, String superPower, int age, int restLevel, int boredomLevel,
-                   int hungerLevel, int thirstLevel) {
+                             int hungerLevel, int thirstLevel) {
         this.name = name;
         this.hungerLevel = hungerLevel;
         this.thirstLevel = thirstLevel;
@@ -23,6 +23,9 @@ public abstract class MythicalCreatures {
         this.superPower = superPower;
         this.age = age;
         this.restLevel = restLevel;
+
+
+
     }
 
     public String getName() {
@@ -56,6 +59,8 @@ public abstract class MythicalCreatures {
     public int getRestLevel() {
         return restLevel;
     }
+
+    public abstract void walkPet();
 
 
 

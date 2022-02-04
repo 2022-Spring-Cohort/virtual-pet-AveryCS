@@ -8,15 +8,16 @@ public class VirtualPetApplication {
 
     VirtualPetShelter mythicalCreatureShelter = new VirtualPetShelter();
 
-
-        Unicorn ozymandias = new Unicorn("Ozymandias", "invisibility", 12, 5, 5, 5, 5, "spiral");
-        Unicorn ravery = new Unicorn("Ravery", "  speaking to every living thing", 200, 5, 5, 5, 5, "tongue");
-        Unicorn maisley = new Unicorn("Maisley", " living underwater", 8, 5, 5, 5, 5, "fish");
-        Unicorn juniper = new Unicorn("Juniper", "making her 3D printed things come to life", 37, 5, 5, 5, 5, "tv");
-        Unicorn codycode = new Unicorn("Codycode", " building software on the spot", 99, 5, 5, 5, 5, "laptop");
-        Unicorn atlas = new Unicorn("Atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5, "globe");
-        Unicorn pauletta = new Unicorn("Pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5, "calculator");
-        Unicorn shardude = new Unicorn("Shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5, "guitar");
+        //Because I made the Unicorn class abstract, I now need to define whether the new instances that I make are
+        //robotic or organic. So instead of just making a new Unicorn, I specify which one it is
+        OrganicUnicorn ozymandias = new OrganicUnicorn("Ozymandias", "invisibility", 12, 5, 5, 5, 5, "spiral");
+        OrganicUnicorn ravery = new OrganicUnicorn("Ravery", "  speaking to every living thing", 200, 5, 5, 5, 5, "tongue");
+        OrganicUnicorn maisley = new OrganicUnicorn("Maisley", " living underwater", 8, 5, 5, 5, 5, "fish");
+        OrganicUnicorn juniper = new OrganicUnicorn("Juniper", "making her 3D printed things come to life", 37, 5, 5, 5, 5, "tv");
+        RoboticUnicorn codycode = new RoboticUnicorn("Codycode", " building software on the spot", 99, 5, 5, 5, 5, "laptop");
+        RoboticUnicorn atlas = new RoboticUnicorn("Atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5, "globe");
+        RoboticUnicorn pauletta = new RoboticUnicorn("Pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5, "calculator");
+        RoboticUnicorn shardude = new RoboticUnicorn("Shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5, "guitar");
         mythicalCreatureShelter.addUnicorn(ozymandias);
         mythicalCreatureShelter.addUnicorn(ravery);
         mythicalCreatureShelter.addUnicorn(maisley);

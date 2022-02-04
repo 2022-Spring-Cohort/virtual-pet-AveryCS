@@ -18,6 +18,7 @@ public class VirtualPetShelter {
         mythicalCreaturesInShelter.add(myUnicorn);
     }
 
+    //this method addnewUnicorn allows you to add either a robotic or organic unicorn. Yay!
     public Unicorn addNewUnicorn() {
         System.out.println("What's your unicorn name?");
         Scanner scanner = new Scanner(System.in);
@@ -35,18 +36,35 @@ public class VirtualPetShelter {
         scanner = new Scanner(System.in);
         String newHornShape = scanner.nextLine();
 
+        System.out.println("Is your pet organic or robotic? Press 1 for robotic. Press 2 for organic");
+        scanner = new Scanner(System.in);
+        int organicOrRobotic = scanner.nextInt();
 
-        Unicorn newUnicorn = new Unicorn(newName, newSuperPower, newAge, 5, 5, 5, 5, newHornShape);
-        mythicalCreaturesInShelter.add(newUnicorn);
+        if (organicOrRobotic == 1) {
 
-        System.out.println("\n \nDon't worry, "+ newUnicorn+ "will be well taken care of at the shelter!\n \n");
+            RoboticUnicorn newRoboticUnicorn = new RoboticUnicorn(newName, newSuperPower, newAge, 5, 5, 5, 5, newHornShape);
+            mythicalCreaturesInShelter.add(newRoboticUnicorn);
 
-        return newUnicorn;
+            System.out.println("\n \nDon't worry, your robotic unicorn " + newRoboticUnicorn.getName() + "will be well taken care of at the shelter!\n \n");
 
+            return newRoboticUnicorn;
+        } else if (organicOrRobotic == 2) {
+            OrganicUnicorn newOrganicUnicorn = new OrganicUnicorn(newName, newSuperPower,newAge, 5, 5, 5,5,newHornShape);
+            System.out.println("\n \nDon't worry, your organic unicorn " + newOrganicUnicorn.getName()+ "will be well taken care of at the shelter!\n \n");
+            return newOrganicUnicorn;
+
+        }
+            else {
+            OrganicUnicorn newOrganicUnicorn = new OrganicUnicorn(newName, newSuperPower,newAge, 5, 5, 5,5,newHornShape);
+            System.out.println("\n \n You did not choose 1 or 2, so we made your unicorn organic. Don't worry, your organic unicorn " + newOrganicUnicorn.getName() + "will be well taken care of at the shelter!\n \n");
+            return newOrganicUnicorn;
+
+        }
     }
 
+
     public void adoptUnicorn() {
-        System.out.println("There are currently "+mythicalCreaturesInShelter.size()+ " unicorns to adopt. See the list below:");
+        System.out.println("There are currently " + mythicalCreaturesInShelter.size() + " unicorns to adopt. See the list below:");
         //prints name of all the MC's in the shelter
 
         for (MythicalCreatures creatures : mythicalCreaturesInShelter)
@@ -76,7 +94,7 @@ public class VirtualPetShelter {
                 //just looped throug
                 chosenUnicorn = (Unicorn) currentCreature;
             }
-            }
+        }
 
         //AND if the chosenUnicorn isn't null, meaning that it is in the Array List, then remove it
         if (chosenUnicorn != null) {
@@ -85,9 +103,6 @@ public class VirtualPetShelter {
         }
 
     }
-
-
-
 
 
 //    public void adoptUnicorn(){
@@ -103,19 +118,6 @@ public class VirtualPetShelter {
 //                }
 //            }
 //                System.out.println(currentCreature.getName());
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public void getallMythicalCreatures() {
@@ -154,4 +156,4 @@ public class VirtualPetShelter {
         }
     }
 
-    }
+}
