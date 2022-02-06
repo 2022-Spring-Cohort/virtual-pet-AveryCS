@@ -12,10 +12,10 @@ public class VirtualPetApplication {
         //Because I made the Unicorn class abstract, I now need to define whether the new instances that I make are
         //robotic or organic. So instead of just making a new Unicorn, I specify which one it is
         OrganicUnicorn ozymandias = new OrganicUnicorn("Ozymandias", "invisibility", 12, 5, 5, 5, 5, "spiral");
-        OrganicUnicorn ravery = new OrganicUnicorn("Ravery", "  speaking to every living thing", 200, 5, 5, 5, 5, "tongue");
-        OrganicUnicorn maisley = new OrganicUnicorn("Maisley", " living underwater", 8, 5, 5, 5, 5, "fish");
+        OrganicUnicorn ravery = new OrganicUnicorn("Ravery", "speaking to every living thing", 200, 5, 5, 5, 5, "tongue");
+        OrganicUnicorn maisley = new OrganicUnicorn("Maisley", "living underwater", 8, 5, 5, 5, 5, "fish");
         OrganicUnicorn juniper = new OrganicUnicorn("Juniper", "making her 3D printed things come to life", 37, 5, 5, 5, 5, "tv");
-        RoboticUnicorn codycode = new RoboticUnicorn("Codycode", " building software on the spot", 99, 5, 5, 5, 5, "laptop");
+        RoboticUnicorn codycode = new RoboticUnicorn("Codycode", "building software on the spot", 99, 5, 5, 5, 5, "laptop");
         RoboticUnicorn atlas = new RoboticUnicorn("Atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5, "globe");
         RoboticUnicorn pauletta = new RoboticUnicorn("Pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5, "calculator");
         RoboticUnicorn shardude = new RoboticUnicorn("Shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5, "guitar");
@@ -38,7 +38,7 @@ public class VirtualPetApplication {
         mythicalCreatureShelter.addCentaur(wrevenia);
 
 
-        System.out.println("Welcome to Virtual Pet land! To get started, please type the number that represents your favorite" +
+        System.out.println("Welcome to Virtual Pet land! To get started, please type the number that represents your favorite " +
                 "color. \n 1- red \n 2- orange \n 3- blue \n 4- green \n 5- purple \n 6-black \n 7- pink \n 8-turquoise" +
                 "\n 9-yellow \n 10-brown \n 11-rust \n 12-gray \n 13-My favorite color is not listed.");
 
@@ -161,7 +161,7 @@ public class VirtualPetApplication {
             } else if (userSelection.trim().equals("4")) {
                 userPet.tickMethod();
                 userPet.playMethod();
-                System.out.println("Message from " + userPet.getName() +"Aww man, do I have to take a nap?...I guess it's for the best");
+                System.out.println("Message from " + userPet.getName() +": Aww man, do I have to take a nap?...I guess it's for the best");
             } else if (userSelection.trim().equals("5")) {
                 userPet.tickMethod();
                 userPet.playMethod();
@@ -188,12 +188,14 @@ public class VirtualPetApplication {
                 mythicalCreatureShelter.adoptUnicorn();
                 System.out.println();
             } else if (userSelection.trim().equalsIgnoreCase("H")) {
-                if (userPet instanceof Centaur) {
-                    mythicalCreatureShelter.addNewCentaur();
-                } else {
+                System.out.println("Great! Who would you like to check in to the shelter today?\nPress 1 if you'd like to add a centaur \nPress 2 if you'd like to add a unicorn");
+                String userSelectionCentaurOrUnicorn = userInput.nextLine();
+                if (userSelectionCentaurOrUnicorn.trim().equals("1")){
+                     mythicalCreatureShelter.addNewCentaur();
+                } else if (userSelectionCentaurOrUnicorn.trim().equals("2")){
                     mythicalCreatureShelter.addNewUnicorn();
+                } else { throw new IllegalArgumentException("You must choose 1 or 2");
                 }
-
             } else if (userSelection.trim().equalsIgnoreCase("I")) {
                 userPet.walkPet();
                 System.out.println("Message from "+ userPet.getName()+": I enjoyed our walk!");

@@ -16,7 +16,7 @@ public abstract class Unicorn extends MythicalCreatures {
 
     @Override
     public String greeting() {
-        return "Congratulations! " + name + " is your virtual unicorn. " + name + " is  " + age + " years old, and she has the \n super power of" + superPower + ", and a " +
+        return "Congratulations! " + name + " is your virtual unicorn. " + name + " is  " + age + " years old, and she has the \n super power of " + superPower + "- and a " +
                 hornShape + " shaped horn.";
     }
 
