@@ -1,12 +1,13 @@
 package virtual_pet;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class VirtualPetApplication {
 
     public static void main(String[] args) {
 
-    VirtualPetShelter mythicalCreatureShelter = new VirtualPetShelter();
+        VirtualPetShelter mythicalCreatureShelter = new VirtualPetShelter();
 
         //Because I made the Unicorn class abstract, I now need to define whether the new instances that I make are
         //robotic or organic. So instead of just making a new Unicorn, I specify which one it is
@@ -18,6 +19,11 @@ public class VirtualPetApplication {
         RoboticUnicorn atlas = new RoboticUnicorn("Atlas", "being able to go around the world in 10 seconds or less", 53, 5, 5, 5, 5, "globe");
         RoboticUnicorn pauletta = new RoboticUnicorn("Pauletta", "being able to solve any math problem instantly", 32, 5, 5, 5, 5, "calculator");
         RoboticUnicorn shardude = new RoboticUnicorn("Shardude", "being able to play any musical instrument in the world", 94, 5, 5, 5, 5, "guitar");
+        RoboticCentaur bennifer = new RoboticCentaur("Bennifer", "being able to snowplow a mile in 1 second", 102, 5, 5, 5, 5, " a snowflake");
+        RoboticCentaur boga = new RoboticCentaur("Boga", "being able to speak backwards, while coaching football, painting, and saving the world", 30, 5, 5, 5, 5, "the state of Alabama");
+        OrganicCentaur lark = new OrganicCentaur("Lark", "being able to disappear into a suitcase", 478, 5, 5, 5, 5, "the state of Georgia");
+        OrganicCentaur wrevenia = new OrganicCentaur("Wrevenia", "making the best meals in the world", 83, 5, 5, 5, 5, "the Eastern Star");
+
         mythicalCreatureShelter.addUnicorn(ozymandias);
         mythicalCreatureShelter.addUnicorn(ravery);
         mythicalCreatureShelter.addUnicorn(maisley);
@@ -26,19 +32,23 @@ public class VirtualPetApplication {
         mythicalCreatureShelter.addUnicorn(atlas);
         mythicalCreatureShelter.addUnicorn(pauletta);
         mythicalCreatureShelter.addUnicorn(shardude);
-
+        mythicalCreatureShelter.addCentaur(bennifer);
+        mythicalCreatureShelter.addCentaur(boga);
+        mythicalCreatureShelter.addCentaur(lark);
+        mythicalCreatureShelter.addCentaur(wrevenia);
 
 
         System.out.println("Welcome to Virtual Pet land! To get started, please type the number that represents your favorite" +
-                "color. \n 1- red \n 2- orange \n 3- blue \n 4- green \n 5- purple \n 6-black \n 7- pink \n 8- My favorite color is not listed.");
+                "color. \n 1- red \n 2- orange \n 3- blue \n 4- green \n 5- purple \n 6-black \n 7- pink \n 8-turquoise" +
+                "\n 9-yellow \n 10-brown \n 11-rust \n 12-gray \n 13-My favorite color is not listed.");
 
         Scanner userInput = new Scanner(System.in);
 
         String userFavColor = userInput.nextLine();
 
         String greeting;
-        Unicorn userPet;
-        switch (userFavColor.toLowerCase()) {
+        MythicalCreatures userPet;
+        switch (userFavColor.trim().toLowerCase()) {
             case "1":
                 greeting = ozymandias.greeting();
                 userPet = ozymandias;
@@ -67,7 +77,33 @@ public class VirtualPetApplication {
                 greeting = pauletta.greeting();
                 userPet = pauletta;
                 break;
+
             case "8":
+                greeting = shardude.greeting();
+                userPet = shardude;
+                break;
+
+            case "9":
+                greeting = bennifer.greeting();
+                userPet = bennifer;
+                break;
+
+            case "10":
+                greeting = boga.greeting();
+                userPet = boga;
+                break;
+
+            case "11":
+                greeting = lark.greeting();
+                userPet = lark;
+                break;
+
+            case "12":
+                greeting = wrevenia.greeting();
+                userPet = wrevenia;
+                break;
+
+            case "13":
                 greeting = shardude.greeting();
                 userPet = shardude;
                 break;
@@ -79,28 +115,26 @@ public class VirtualPetApplication {
 
         }
 
-        System.out.println(userPet.greeting());
 
-        String asciiUnicorn = "                   ,%%%,\n" +
-                "                 ,%%%` %==--\n" +
-                "                ,%%`( '|\n" +
-                "               ,%%@ /\\_/\n" +
-                "     ,%.-\"\"\"--%%% \"@@__\n" +
-                "    %%/             |__`\\\n" +
-                "   .%'\\     |   \\   /  //\n" +
-                "   ,%' >   .'----\\ |  [/\n" +
-                "      < <<`       ||\n" +
-                "       `\\\\\\       ||\n" +
-                "         )\\\\      )\\\n" +
-                " ^^^jgs^^\"\"\"^^^^^^\"\"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
-        System.out.println(asciiUnicorn);
+
+        if (userPet instanceof Unicorn) {
+
+            System.out.println(userPet.greeting());
+            userPet.asciiPet();
+
+
+        } else {
+            System.out.println(userPet.greeting());
+            userPet.asciiPet();
+        }
+
 
         String instructions = "\nPress the corresponding key to perform these actions with your pet: \n1- Get status of " +
                 "your pet \n2- Feed  \n3- Give water \n4- Give rest \n5- Play with your pet \n \nOR, would you like to hang" +
                 "out with ALL of the creatures in the shelter?\n \nIf so, see the selections below: " +
                 "\n\nA- Get status (of ALL pets) \nB- Feed (ALL pets)  \nC- Give water (to ALL pets) \nD- Give rest (to ALL pets)" +
                 " \nE- Play (with ALL pets) \n\n OR see the following: \nF- See which pets are currently in the shelter" +
-                "\nG-Adopt a pet \nH- Add a pet  ";
+                "\nG-Adopt a pet \nH- Add a pet \nI-Walk your pet \nJ-Clean your pet's cage/ give it oil \nK-Walk all unicorns";
 
         System.out.println(instructions);
 
@@ -110,65 +144,80 @@ public class VirtualPetApplication {
         String userSelection = userInput.nextLine();
 
 
-        while (userPet.getRestLevel() > 15 || userPet.getBoredomLevel() > 15 || userPet.getThirstLevel() > -5 &&
-                userPet.getThirstLevel() < 10 || userPet.getHungerLevel() > -5 && userPet.getHungerLevel() < 10) {
+        while (userPet.canKeepPlaying() == true) {
 
-            if (userSelection.contains("1")) {
+            if (userSelection.trim().equals("1")) {
                 System.out.println(userPet.statusMessage());
 
-            } else if (userSelection.contains("2")) {
+            } else if (userSelection.trim().equals("2")) {
                 userPet.tickMethod();
                 userPet.feedPetMethod();
-                System.out.println("That was a great meal, yum");
+                System.out.println("Message from " + userPet.getName() +": That was a great meal, yum");
 
-            } else if (userSelection.contains("3")) {
+            } else if (userSelection.trim().equals("3")) {
                 userPet.tickMethod();
                 userPet.waterPetMethod();
-                System.out.println("That water was so refreshing! Thanks!");
-            } else if (userSelection.contains("4")) {
+                System.out.println("Message from " + userPet.getName() +": That water was so refreshing! Thanks!");
+            } else if (userSelection.trim().equals("4")) {
                 userPet.tickMethod();
                 userPet.playMethod();
-                System.out.println("Aww man, do I have to take a nap?...I guess it's for the best");
-            } else if (userSelection.contains("5")) {
+                System.out.println("Message from " + userPet.getName() +"Aww man, do I have to take a nap?...I guess it's for the best");
+            } else if (userSelection.trim().equals("5")) {
                 userPet.tickMethod();
                 userPet.playMethod();
-                System.out.println("That was so much fun! I love to play.");
-            } else if (userSelection.equalsIgnoreCase(  "A")){
-                 mythicalCreatureShelter.showAllStatus();
-            }else if (userSelection.equalsIgnoreCase("B")) {
+                System.out.println("Message from " + userPet.getName() +": that was so much fun! I love to play.");
+            } else if (userSelection.trim().equalsIgnoreCase("A")) {
+                mythicalCreatureShelter.showAllStatus();
+            } else if (userSelection.trim().equalsIgnoreCase("B")) {
                 mythicalCreatureShelter.feedAll();
                 System.out.println("\n \nThanks for giving us all something to eat! We can't wait until the next meal!\n \n");
-            }else if (userSelection.equalsIgnoreCase("C")) {
+            } else if (userSelection.trim().equalsIgnoreCase("C")) {
                 mythicalCreatureShelter.waterAll();
                 System.out.println("\n \nThanks for giving us all something to drink!\n \n");
-            }else if (userSelection.equalsIgnoreCase("D")) {
+            } else if (userSelection.trim().equalsIgnoreCase("D")) {
                 mythicalCreatureShelter.giveRestToAll();
                 System.out.println("\n \nNaptime for us :( \n \n");
-            }else if (userSelection.equalsIgnoreCase("E")) {
+            } else if (userSelection.trim().equalsIgnoreCase("E")) {
                 mythicalCreatureShelter.playWithAll();
                 System.out.println("\n \nWe had such a great time playing with all our friends \n \n");
                 System.out.println("\n \nWe had fun flying with our friends! Thanks for taking us to play!\n \n");
-            } else if (userSelection.equalsIgnoreCase("F")) {
+            } else if (userSelection.trim().equalsIgnoreCase("F")) {
                 System.out.println("\n \nHere's who's left in the shelter at this time: \n");
                 mythicalCreatureShelter.getallMythicalCreatures();
-            }else if (userSelection.equalsIgnoreCase("G")) {
+            } else if (userSelection.trim().equalsIgnoreCase("G")) {
                 mythicalCreatureShelter.adoptUnicorn();
                 System.out.println();
-            }else if (userSelection.equalsIgnoreCase("H")) {
-                mythicalCreatureShelter.addNewUnicorn();
+            } else if (userSelection.trim().equalsIgnoreCase("H")) {
+                if (userPet instanceof Centaur) {
+                    mythicalCreatureShelter.addNewCentaur();
+                } else {
+                    mythicalCreatureShelter.addNewUnicorn();
+                }
 
+            } else if (userSelection.trim().equalsIgnoreCase("I")) {
+                userPet.walkPet();
+                System.out.println("Message from "+ userPet.getName()+": I enjoyed our walk!");
+
+            } else if (userSelection.trim().equalsIgnoreCase("J")) {
+                 userPet.petCare();
+                System.out.println("Thanks so much for taking great care of me!");
+            }else if (userSelection.trim().equalsIgnoreCase("K")) {
+                mythicalCreatureShelter.walkAllUnicorns();
+                System.out.println("Thanks so much for taking great care of me!");
             }
 
-            else {
-                System.out.println("Your selection must be 1-8 or A-H.");
+            else
+            {
+                System.out.println("Your selection must be 1-8 or A-J.");
                 System.out.println(proceedMessage);
-                        userSelection = userInput.nextLine();
+                userSelection = userInput.nextLine();
             }
 
             System.out.println(instructions);
             System.out.println(proceedMessage);
             userSelection = userInput.nextLine();
-        } {
+        }
+        {
             System.out.println("Sorry, the game has ended and unfortunately " + userPet.getName() + " is no longer with us.");
         }
     }

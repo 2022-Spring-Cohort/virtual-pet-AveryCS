@@ -1,15 +1,17 @@
 package virtual_pet;
 
+import javax.swing.*;
+
 public abstract class MythicalCreatures {
 
-    private String name;
-    private int hungerLevel;
-    private int thirstLevel;
-    private int boredomLevel;
-    private String color;
-    private String superPower;
-    private int age;
-    private int restLevel;
+    protected String name;
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int boredomLevel;
+    protected String color;
+    protected String superPower;
+    protected int age;
+    protected int restLevel;
 
 
 
@@ -61,14 +63,20 @@ public abstract class MythicalCreatures {
     }
 
     public abstract void walkPet();
-
-
-
-    public String greeting() {
-
-        return "Congratulations! " + name + " is your virtual unicorn. "+ name+ " is  " + age + " years old, and she has the super power of " + superPower + ".";
-
+    public abstract int petCare();
+    public boolean canKeepPlaying(){
+         if(getRestLevel() > 15 || getBoredomLevel() > 15 || getThirstLevel() > -5 &&
+                getThirstLevel() < 10 || getHungerLevel() > -5 && getHungerLevel() < 10)
+         return true;
+         else return false;
     }
+
+
+
+
+    public abstract String greeting();
+    public abstract void asciiPet();
+
     public String statusMessage(){
         return  "Here's what " + name+" has to say:\n" + hungerLevelMessage()+ "\n" + thirstLevelMessage()+"\n" + boredomLevelMessage()+ "\n" +restLevelMessage() +"\n \n";
     }
@@ -94,7 +102,7 @@ public abstract class MythicalCreatures {
             thirstLevelMessage = "I am not thirsty";
         } else if (thirstLevel >= 5 && thirstLevel <= 7) {
             thirstLevelMessage =  "I could use a drink";
-        } else if (thirstLevel > 8) {
+        } else if (thirstLevel >= 8) {
             thirstLevelMessage = "I need water asap!";
         } else {
             return "";

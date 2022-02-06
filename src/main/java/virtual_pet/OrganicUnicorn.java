@@ -8,10 +8,31 @@ public class OrganicUnicorn extends Unicorn{
 
         this.needCleaningLevel =5;
     }
-//The walkpet method was abstract from the superclass. Anything that is abstract has to be passed down, bc it is is the
-    //contract. So, you have to add the method, but then you have to kind of define it, aka curlybraces, even though
-    //there's nohhing in there.
-    public void walkPet(){
+
+    public int getNeedCleaningLevel() {
+        return needCleaningLevel;
     }
 
+    //this is cleaning the cage of the organic pet
+    public int petCare(){
+        return needCleaningLevel--;
+    }
+
+    @Override
+    public boolean canKeepPlaying() {
+        return super.canKeepPlaying() && getNeedCleaningLevel() <= 10;
+    }
+
+    //The walkpet method was abstract from the superclass. Anything that is abstract has to be passed down, bc it is is the
+    //contract. So, you have to add the method, but then you have to kind of define it, aka curly braces, even though
+    //there's nohhing in there.
+    public void walkPet(){
+        needCleaningLevel --;
+    }
+
+    @Override
+    public void playMethod() {
+        super.playMethod();
+        needCleaningLevel++;
+    }
 }

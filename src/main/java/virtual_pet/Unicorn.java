@@ -13,6 +13,27 @@ public abstract class Unicorn extends MythicalCreatures {
     }
     public void walkPet() {
     }
+
+    @Override
+    public String greeting() {
+        return "Congratulations! " + name + " is your virtual unicorn. " + name + " is  " + age + " years old, and she has the \n super power of" + superPower + ", and a " +
+                hornShape + " shaped horn.";
+    }
+
+    public void asciiPet(){
+        System.out.println( "                   ,%%%,\n" +
+                "                 ,%%%` %==--\n" +
+                "                ,%%`( '|\n" +
+                "               ,%%@ /\\_/\n" +
+                "     ,%.-\"\"\"--%%% \"@@__\n" +
+                "    %%/             |__`\\\n" +
+                "   .%'\\     |   \\   /  //\n" +
+                "   ,%' >   .'----\\ |  [/\n" +
+                "      < <<`       ||\n" +
+                "       `\\\\\\       ||\n" +
+                "         )\\\\      )\\\n" +
+                " ^^^jgs^^\"\"\"^^^^^^\"\"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+    }
 }
 
 
