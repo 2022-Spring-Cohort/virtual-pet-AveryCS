@@ -19,9 +19,6 @@ public class RoboticCentaur extends Centaur{
         return needMaintenanceLevel--;
     }
 
-    //    -Overriding the walk method from the superclass (when walked, need for cage cleaning goes down)
-
-
     @Override
     public void walkPet() {
         needMaintenanceLevel++;
@@ -38,9 +35,6 @@ public class RoboticCentaur extends Centaur{
         return super.canKeepPlaying() && getNeedMaintenanceLevel() <= 10;
     }
 
-    //I want something in the game to counteract the needMaintenanceLevel going up. So, I am going to override the
-    //play method that comes from the super class. So that the more you play with robotic stuff,
-    // the needMaintenanceLevel will increase
 
     @Override
     public void playMethod() {

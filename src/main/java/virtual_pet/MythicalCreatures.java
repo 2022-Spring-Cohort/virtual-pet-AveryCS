@@ -65,7 +65,7 @@ public abstract class MythicalCreatures {
     public abstract void walkPet();
     public abstract int petCare();
     public boolean canKeepPlaying(){
-         if(getRestLevel() > 15 || getBoredomLevel() > 15 || getThirstLevel() > -5 &&
+         if(getRestLevel() > -5 && getRestLevel() < 15 || getBoredomLevel() < 15 && getBoredomLevel()>-5 || getThirstLevel() > -5 &&
                 getThirstLevel() < 10 || getHungerLevel() > -5 && getHungerLevel() < 10)
          return true;
          else return false;

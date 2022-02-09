@@ -26,9 +26,7 @@ public class OrganicCentaur extends Centaur{
     public boolean canKeepPlaying() {
         return super.canKeepPlaying() && getNeedCleaningLevel() <= 10;
     }
-    //I want something in the game to counteract the needCleaningLevel going down. So, I am going to override the
-    //play method that comes from the super class. So that the more you play with organic stuff,
-    // the needCleaningLevel will increase
+
 
     @Override
     public void playMethod() {

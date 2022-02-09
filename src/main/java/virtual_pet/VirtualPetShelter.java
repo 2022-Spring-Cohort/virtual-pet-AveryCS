@@ -108,39 +108,36 @@ public class VirtualPetShelter {
     }
 
 
-    public void adoptUnicorn() {
+    public void adoptMythicalCreature() {
         System.out.println("There are currently " + mythicalCreaturesInShelter.size() + " mythical creatures to adopt. See the list below:");
-        //prints name of all the MC's in the shelter
         for (MythicalCreatures creatures : mythicalCreaturesInShelter)
             System.out.println(creatures.getName());
         //scanner brings in the user input
         scanner = new Scanner(System.in);
 
-        //this says that the user input will be assigned to a String of their choosing
-        String adoptedUnicorn = scanner.nextLine();
-        Unicorn chosenUnicorn = null;
+
+        String adoptedMythicalCreature = scanner.nextLine();
+        MythicalCreatures chosenPet = null;
 
 
         for (MythicalCreatures currentCreature : mythicalCreaturesInShelter) {
-            //if the name of the creature in the ArrayList equals the name of the adopted unicorn
-            if (currentCreature.getName().equalsIgnoreCase(adoptedUnicorn)) {
-
-                //this is saying if the chosenUnicorn is equal to the currentCreature that it
-                //just looped through
-                chosenUnicorn = (Unicorn) currentCreature;
+            if (currentCreature.getName().equalsIgnoreCase(adoptedMythicalCreature)) {
+                chosenPet = (MythicalCreatures) currentCreature;
             }
         }
-
-        //AND if the chosenUnicorn isn't null, meaning that it is in the Array List, then remove it
-        if (chosenUnicorn != null) {
-            mythicalCreaturesInShelter.remove(chosenUnicorn);
-            System.out.println("\n \nCongratulations! You have now adopted " + chosenUnicorn.getName() + "!\n \n");
+        if (chosenPet != null) {
+            mythicalCreaturesInShelter.remove(chosenPet);
+            System.out.println("\n \nCongratulations! You have now adopted " + chosenPet.getName() + "!\n \n");
         }
         else {
-            System.out.println("The pet you chose is not in the shelter. Please check the spelling and try again.");
+            System.out.println("The pet you chose is not in the shelter. Please check the spelling and choose another pet");
         }
 
     }
+
+
+
+
     public void getallMythicalCreatures() {
         for (MythicalCreatures currentCreature : mythicalCreaturesInShelter) {
             System.out.println(currentCreature.getName());

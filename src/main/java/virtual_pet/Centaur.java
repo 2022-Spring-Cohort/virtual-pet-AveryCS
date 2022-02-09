@@ -1,6 +1,6 @@
 package virtual_pet;
 
-//this is becoming abstract because a basic centaur will not be used- just robotic or organic
+
 public abstract class Centaur extends MythicalCreatures {
     private String hoofShape;
 

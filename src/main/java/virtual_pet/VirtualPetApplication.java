@@ -115,9 +115,9 @@ public class VirtualPetApplication {
 
         }
 
+//The if else statement below may be able to be eliminated. Please check on this later
 
-
-        if (userPet instanceof Unicorn) {
+        if(userPet instanceof Unicorn) {
 
             System.out.println(userPet.greeting());
             userPet.asciiPet();
@@ -185,7 +185,7 @@ public class VirtualPetApplication {
                 System.out.println("\n \nHere's who's left in the shelter at this time: \n");
                 mythicalCreatureShelter.getallMythicalCreatures();
             } else if (userSelection.trim().equalsIgnoreCase("G")) {
-                mythicalCreatureShelter.adoptUnicorn();
+                mythicalCreatureShelter.adoptMythicalCreature();
                 System.out.println();
             } else if (userSelection.trim().equalsIgnoreCase("H")) {
                 System.out.println("Great! Who would you like to check in to the shelter today?\nPress 1 if you'd like to add a centaur \nPress 2 if you'd like to add a unicorn");

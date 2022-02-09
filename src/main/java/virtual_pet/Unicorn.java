@@ -1,8 +1,7 @@
 package virtual_pet ;
 
 public abstract class Unicorn extends MythicalCreatures {
-    //I am making this abstract because the basic Unicorn is no longer being used. Basically, everything needed
-    //for the game is either going to be a organic or robotic Unicorn
+
 
     private String hornShape;
 

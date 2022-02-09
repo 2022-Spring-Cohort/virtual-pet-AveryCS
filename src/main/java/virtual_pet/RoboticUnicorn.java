@@ -33,9 +33,7 @@ public class RoboticUnicorn extends Unicorn{
     }
 
 
-    //I want something in the game to counteract the needMaintenanceLevel going up. So, I am going to override the
-    //play method that comes from the super class. So that the more you play with robotic stuff,
-    // the needMaintenanceLevel will increase
+
     @Override
     public void playMethod() {
         super.playMethod();
